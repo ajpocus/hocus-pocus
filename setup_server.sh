@@ -1,5 +1,9 @@
 #!/bin/bash
 
+echo "SERVER NAME";
+echo $SERVER;
+exit 0;
+
 sudo apt-get -y install build-essential git monit;
 sudo add-apt-repository ppa:nginx/stable;
 sudo apt-get update;
