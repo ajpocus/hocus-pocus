@@ -1,25 +1,14 @@
 #!/bin/bash
 
-echo "SERVER NAME";
-echo $SERVER;
-exit 0;
+while getopts "h?s:n:u:" opt; do
+  case "$opt" in
+    n) APP_NAME=$OPTARG
+      ;;
+    u) USER_NAME=$OPTARG
+      ;;
+   esac
+done
 
-sudo apt-get -y install build-essential git monit;
-sudo add-apt-repository ppa:nginx/stable;
-sudo apt-get update;
-sudo apt-get -y install nginx;
+echo "APP NAME";
+echo $APP_NAME;
 
-useradd -m web;
-usermod -aG sudo web;
-echo "%sudo ALL=NOPASSWD:/usr/bin/monit" >> /etc/sudoers;
-passwd web;
-su web;
-echo `whoami`;
-
-chsh -s /bin/bash;
-mkdir ~/src;
-cd ~/src;
-git clone git://github.com/joyent/node.git;
-cd node;
-git checkout v0.10.15;
-./configure && make && sudo make install;
