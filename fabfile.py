@@ -25,4 +25,6 @@ def setup_server(user_name="app", app_name="app"):
     pwd;
     git checkout v0.10.15;
     ./configure && make && sudo make install;
+    
+    
   """, user_name);
